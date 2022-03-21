@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+#wrapper {
+  width: 98vw;
+  background-color: rgb(235, 232, 228);
+}
+
+form {
+  margin-left: 15px;
+}
+form > h1 {
+  margin-bottom: 5px;
+}
+
+input {
+  height: 25px;
+  background-color: rgb(235, 232, 228);
+  border: 1px solid black;
+}
+
+.student-box {
+  background-color: rgb(216, 209, 199);
+  padding-left: 15px;
+}
+
+.student-name {
+  padding-top: 15px;
+  margin-bottom: 0px;
+}
+
+.student-box > h2 {
+  margin: 5px 0px;
+}
+
+.student-course-box {
+  padding-bottom: 20px;
+}
+
+.student-course {
+  border: 3px solid rgb(191, 154, 106);
+  background-color: rgb(235, 232, 228);
+  margin: 7px 7px 7px 0px;
+  display: inline-block;
+  padding: 2px;
+}
+
+.student-course > p {
+  margin: 3px;
+}
