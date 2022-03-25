@@ -34,11 +34,15 @@ input {
 }
 
 .student-box > h2 {
-  margin: 5px 0px;
+margin-top: 5px;
+margin-bottom: 0px;
 }
 
 .student-course-box {
   padding-bottom: 20px;
+  background-color: rgb(216, 209, 199);
+  padding-left: 15px;
+
 }
 
 .student-course {
