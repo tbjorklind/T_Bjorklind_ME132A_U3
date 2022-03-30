@@ -1,4 +1,39 @@
 'use strict'
+let selector = document.querySelector('#theme-selector')
+selector.addEventListener('change', changeTheme)
+let cssRoot = document.querySelector(':root')
+
+window.addEventListener('load', function (event) {
+  setTheme()
+})
+
+function changeTheme () {
+  localStorage.setItem('theme', selector.value)
+  if (selector.value == 'yellow') {
+    setYellowTheme()
+  } else if (selector.value == 'green') {
+    setGreenTheme()
+}}
+
+function setTheme () {
+  let theme = localStorage.getItem('theme')
+  if (theme == 'yellow') {
+    setYellowTheme()
+  } else if (theme == 'green') {
+    setGreenTheme()
+}}
+
+function setGreenTheme () {
+  cssRoot.style.setProperty('--backColor', 'rgb(118, 131, 118)')
+}
+
+function setYellowTheme () {
+  cssRoot.style.setProperty('--backColor', 'rgb(182, 144, 88)')
+}
+
+
+
+
 
 function getStudent () {
   let input = document.getElementById('student-input')
@@ -56,7 +91,7 @@ function getTotalCredits (courses) {
   })
   return studentTotalCredits
 }
-//and courses total credits, 
+//and courses total credits,
 function getCourseTitle (student) {
   let studentContainer = document.getElementById('student-container')
   let studentCourseBox = document.createElement('div')
@@ -66,23 +101,21 @@ function getCourseTitle (student) {
   for (let studentCourse of student.courses) {
     for (let courseCourse of DATABASE.courses) {
       if (studentCourse.courseId == courseCourse.courseId) {
-
         let div = document.createElement('div')
         div.classList.add('student-course')
-        div.innerHTML =
-        `
+        div.innerHTML = `
                   <p>${courseCourse.title}</p>
-                  <p>${studentCourse.started.semester} ${studentCourse.started.year} (${studentCourse.passedCredits
-                  } of ${courseCourse.totalCredits} credits)</p>
+                  <p>${studentCourse.started.semester} ${studentCourse.started.year} (${studentCourse.passedCredits} of ${courseCourse.totalCredits} credits)</p>
                 </div>
       `
-      if (studentCourse.passedCredits == courseCourse.totalCredits){
-        div.style.background = "rgb(191, 154, 106)";
-      }
+        if (studentCourse.passedCredits == courseCourse.totalCredits) {
+          div.style.background = 'rgb(191, 154, 106)'
+        }
         studentCourseBox.appendChild(div)
       }
     }
-  } return
   }
+  return
+}
 
 setKeyUp()
