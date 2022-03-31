@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../Studs and cours/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../Studs and cours/styles.css" />
@@ -17,6 +17,17 @@
   <body>
     <div id="wrapper">
       <form id="course-form">
+        <div class="top-div">
+          <p>Choose your theme here:</p>
+          <select name="theme-selector" id="theme-selector">
+            <option value="white">White theme</option>
+            <option value="yellow">Yellow theme</option>
+            <option value="green">Green theme</option>
+          </select>
+          <button class="course-btn">
+            <a href="homepage.html">Back to homepage</a>
+          </button>
+        </div>
         <h1>Search courses by tilte</h1>
         <input
           id="course-input"
@@ -27,6 +38,6 @@
       <div id="course-container"></div>
     </div>
     <script src="courses.js"></script>
-    <script src="../Studs and cours/database.js"></script>
+    <script src="database.js"></script>
   </body>
 </html>

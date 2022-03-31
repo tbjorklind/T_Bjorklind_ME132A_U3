@@ -1,4 +1,7 @@
 'use strict'
+
+// white, yellow and green theme -----------------
+
 let selector = document.querySelector('#theme-selector')
 selector.addEventListener('change', changeTheme)
 let cssRoot = document.querySelector(':root')
@@ -9,31 +12,40 @@ window.addEventListener('load', function (event) {
 
 function changeTheme () {
   localStorage.setItem('theme', selector.value)
-  if (selector.value == 'yellow') {
+  if (selector.value == 'white') {
+    setWhiteTheme()
+  } else if (selector.value == 'yellow') {
     setYellowTheme()
   } else if (selector.value == 'green') {
     setGreenTheme()
-}}
+  }
+}
 
 function setTheme () {
   let theme = localStorage.getItem('theme')
-  if (theme == 'yellow') {
+  if (theme == 'white') {
+    setWhiteTheme()
+  } else if (theme == 'yellow') {
     setYellowTheme()
-  } else if (theme == 'green') {
+  } else if (selector.value == 'green') {
     setGreenTheme()
-}}
-
-function setGreenTheme () {
-  cssRoot.style.setProperty('--backColor', 'rgb(118, 131, 118)')
+  }
+}
+function setWhiteTheme () {
+  cssRoot.style.setProperty('--backColor', 'rgb(235, 232, 228)')
 }
 
 function setYellowTheme () {
   cssRoot.style.setProperty('--backColor', 'rgb(182, 144, 88)')
 }
 
+function setGreenTheme () {
+  cssRoot.style.setProperty('--backColor', 'rgb(118, 131, 118)')
+}
 
+// ----------------------------------------------------
 
-
+// get students, and sort from a - z. -----------------
 
 function getStudent () {
   let input = document.getElementById('student-input')
@@ -53,50 +65,38 @@ function getStudent () {
     })
   return students
 }
+// ----------------------------------------------------
+
+// set key up function on the input field -------------
 
 function setKeyUp () {
   let input = document.getElementById('student-input')
   input.addEventListener('keyup', runCreateStudentBox)
 }
+// ----------------------------------------------------
 
+// creates a box for each student and adds html, (students name and total credits),
 function createStudentBox (student, credits) {
   let studentContainer = document.getElementById('student-container')
-  let div = document.createElement('div')
-  div.classList.add('student-box')
-  div.innerHTML = `
+  let studentBox = document.createElement('div')
+  studentBox.classList.add('student-box')
+  studentBox.innerHTML = `
 <h1 class="student-name">${student.firstName +
     ' ' +
     student.lastName} (total: ${credits} credits)</h1>
 <h2>Courses:</h2>
 `
-  studentContainer.appendChild(div)
-}
-
-function runCreateStudentBox () {
-  let studentContainer = document.getElementById('student-container')
-  let students = getStudent()
-  studentContainer.innerHTML = ''
-
-  for (let student of students) {
-    let credits = getTotalCredits(student.courses)
-    createStudentBox(student, credits)
-    getCourseTitle(student)
-  }
-}
-
-function getTotalCredits (courses) {
-  let studentTotalCredits = 0
-  courses.forEach(course => {
-    studentTotalCredits += course.passedCredits
+  // event listener that shows/hides studentCourseBox when user clicks.
+  studentBox.addEventListener('click', function () {
+    if (studentCourseBox.style.display === 'block') {
+      studentCourseBox.style.display = 'none'
+    } else {
+      studentCourseBox.style.display = 'block'
+    }
   })
-  return studentTotalCredits
-}
-//and courses total credits,
-function getCourseTitle (student) {
-  let studentContainer = document.getElementById('student-container')
+  // creates divs for each course and adds html, (title, semester, year, passed and total credits).
   let studentCourseBox = document.createElement('div')
   studentCourseBox.classList.add('student-course-box')
-  studentContainer.appendChild(studentCourseBox)
 
   for (let studentCourse of student.courses) {
     for (let courseCourse of DATABASE.courses) {
@@ -115,7 +115,35 @@ function getCourseTitle (student) {
       }
     }
   }
+  studentContainer.appendChild(studentBox)
+  studentBox.appendChild(studentCourseBox)
   return
 }
+// ----------------------------------------------------
 
+// "goes through" all students and call on functions
+function runCreateStudentBox () {
+  let studentContainer = document.getElementById('student-container')
+  let students = getStudent()
+  studentContainer.innerHTML = ''
+
+  for (let student of students) {
+    let credits = getTotalCredits(student.courses)
+    createStudentBox(student, credits)
+    // getCourseTitle(student)
+  }
+}
+// ----------------------------------------------------
+
+// get students total credit
+function getTotalCredits (courses) {
+  let studentTotalCredits = 0
+  courses.forEach(course => {
+    studentTotalCredits += course.passedCredits
+  })
+  return studentTotalCredits
+}
+// ----------------------------------------------------
+
+// call on function -----------------------------------
 setKeyUp()

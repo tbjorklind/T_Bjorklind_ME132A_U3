@@ -1,0 +1,144 @@
+:root {
+  --backColor: rgb(235, 232, 228);
+  --yellowColor: rgb(191, 154, 106);
+  --greenColor: rgb(111, 121, 111);
+  --dustyPinkColor: rgb(120, 105, 105);
+  --blkColor: black;
+  --boxShadow: rgb(181, 176, 168);
+  --boxColor: rgb(216, 209, 199);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--backColor);
+}
+
+#wrapper {
+  width: 98vw;
+  background-color: var(--backColor);
+}
+
+form {
+  margin-left: 15px;
+}
+form > h1 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+input,
+select,
+button {
+  height: 35px;
+  background-color: rgb(235, 232, 228);
+  border: 1px solid black;
+}
+.top-div {
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+}
+
+select,
+button {
+  margin: 10px 10px 0px 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.course-btn {
+  background-color: var(--greenColor);
+}
+.student-btn {
+  background-color: var(--yellowColor);
+}
+
+button:hover {
+  box-shadow: 0 0 10px var(--greenColor);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.student-box,
+.course-box {
+  background-color: var(--boxColor);
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+.student-box:hover,
+.course-box:hover {
+  box-shadow: 0 0 5px var(--boxShadow);
+}
+.student-name,
+.course-title {
+  padding-top: 15px;
+  margin-bottom: 0px;
+}
+
+.student-box > h2,
+.course-box > h2 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.student-course-box,
+.course-student-box,
+.teacher-box {
+  background-color: var(--boxColor);
+  display: none;
+}
+
+.top-div > p {
+  margin-top: 18px;
+}
+.student-course {
+  border: 2px solid var(--yellowColor);
+  background-color: var(--backColor);
+  margin: 7px 7px 7px 0px;
+  display: inline-block;
+  padding: 2px;
+}
+
+.course-teacher {
+  border: 2px solid var(--dustyPinkColor);
+  background-color: var(--backColor);
+  margin: 7px 7px 7px 0px;
+  display: inline-block;
+  padding: 2px 5px;
+  margin-bottom: 20px;
+}
+.course-student {
+  border: 2px solid var(--greenColor);
+  background-color: var(--backColor);
+  margin: 7px 7px 7px 0px;
+  display: inline-block;
+  padding: 2px;
+}
+
+.student-course > p,
+.course-student > p {
+  margin: 3px;
+}
+span {
+  color: var(--dustyPinkColor);
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+}
+
+.course-student-box > h1 {
+  margin-top: 0px;
+  padding-top: 10px;
+}
+
+.home-wrap {
+  display: flex;
+  flex-direction: column;
+}
